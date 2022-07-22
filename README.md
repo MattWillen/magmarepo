@@ -15,6 +15,8 @@ Magma is the next generation of hybrid minecraft server softwares.
 
 Magma is based on **Forge and Paper**, meaning it can run both **Craftbukkit/Spigot/Paper plugins and Forge mods**.
 
+At the moment, we implemented the [Craftbukkit](https://hub.spigotmc.org/stash/projects/spigot/repos/craftbukkit) and [Spigot](https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot) Patches. We are working on implementing the [Paper](https://github.com/PaperMC/Paper) and [Purpur](https://github.com/PurpurMC/Purpur) Patches.
+
 We hope to eliminate all issues with craftbukkit forge servers. In the end, we envision a seamless, low lag Magma experience with support for newer 1.12+ versions of Minecraft.
 
 ## 🌐 BungeeCord/Velocity
