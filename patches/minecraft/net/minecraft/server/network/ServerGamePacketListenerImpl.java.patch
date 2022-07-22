@@ -105,7 +105,7 @@
  import net.minecraft.world.entity.animal.horse.AbstractHorse;
  import net.minecraft.world.entity.item.ItemEntity;
  import net.minecraft.world.entity.player.ChatVisiblity;
-@@ -118,1340 +_,2484 @@
+@@ -118,1340 +_,2492 @@
  import net.minecraft.world.entity.player.Player;
  import net.minecraft.world.entity.projectile.AbstractArrow;
  import net.minecraft.world.entity.vehicle.Boat;
@@ -3763,6 +3763,7 @@
 +    // CraftBukkit start
 +    private static final ResourceLocation CUSTOM_REGISTER = new ResourceLocation("register");
 +    private static final ResourceLocation CUSTOM_UNREGISTER = new ResourceLocation("unregister");
++    private static final ResourceLocation PURPUR_CLIENT = new ResourceLocation("purpur", "client"); // Purpur (Used for Purpur Client support)
 +    public void m_7423_(ServerboundCustomPayloadPacket p_9860_) {
 +        PacketUtils.m_131359_( p_9860_, this, this.f_9743_.m_183503_() );
 +        net.minecraftforge.network.NetworkHooks.onCustomPayload( p_9860_, this.f_9742_ );
@@ -3783,9 +3784,16 @@
 +                    getCraftPlayer().removeChannel(channel);
 +                }
 +            } catch (Exception ex) {
-+               f_9744_.error("Couldn\'t unregister custom payload", ex);
++                f_9744_.error("Couldn\'t unregister custom payload", ex);
 +                this.disconnect("Invalid payload UNREGISTER!");
 +            }
++            // Purpur start
++        } else if (p_9860_.f_133980_.equals(PURPUR_CLIENT)) {
++            try {
++                f_9743_.purpurClient = true;
++            } catch (Exception ignore) {
++            }
++            // Purpur end
 +        } else {
 +            try {
 +                byte[] data = new byte[p_9860_.f_133981_.readableBytes()];

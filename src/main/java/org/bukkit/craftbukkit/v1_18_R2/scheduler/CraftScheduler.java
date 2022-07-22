@@ -37,6 +37,8 @@ import java.util.logging.Level;
  */
 public class CraftScheduler implements BukkitScheduler {
 
+    static Plugin MINECRAFT = new MinecraftInternalPlugin(); // Paper
+
     /**
      * The start ID for the counter.
      */
@@ -410,13 +412,19 @@ public class CraftScheduler implements BukkitScheduler {
                     task.run();
                     task.timings.stopTiming(); // Spigot
                 } catch (final Throwable throwable) {
-                    task.getOwner().getLogger().log(
-                            Level.WARNING,
-                            String.format(
-                                    "Task #%s for %s generated an exception",
-                                    task.getTaskId(),
-                                    task.getOwner().getDescription().getFullName()),
-                            throwable);
+                    // Paper start
+                    String msg = String.format(
+                            "Task #%s for %s generated an exception",
+                            task.getTaskId(),
+                            task.getOwner().getDescription().getFullName());
+                    if (task.getOwner() == MINECRAFT) {
+                        net.minecraft.server.MinecraftServer.LOGGER.error(msg, throwable);
+                    } else {
+                        task.getOwner().getLogger().log(
+                                Level.WARNING,
+                                msg, throwable);
+                    }
+                    // Paper end
                 } finally {
                     currentTask = null;
                 }

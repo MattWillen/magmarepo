@@ -1942,4 +1942,10 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
         return spigot;
     }
     // Spigot end
+
+    // Purpur start
+    public boolean usesPurpurClient() {
+        return getHandle().purpurClient;
+    }
+    // Purpur end
 }
