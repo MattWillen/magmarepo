@@ -120,7 +120,7 @@
  import net.minecraft.world.level.biome.BiomeManager;
  import net.minecraft.world.level.border.BorderChangeListener;
  import net.minecraft.world.level.border.WorldBorder;
-@@ -144,1693 +_,2011 @@
+@@ -144,1693 +_,2017 @@
  import net.minecraft.world.level.levelgen.WorldGenSettings;
  import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
  import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
@@ -2366,6 +2366,12 @@
 +            hasStopped = true;
 +        }
 +        // CraftBukkit end
++
++        // TODO: Put this into the correct spot
++        // https://github.com/PurpurMC/Purpur/blob/ver/1.19/patches/server/0253-Give-bee-counts-in-beehives-to-Purpur-clients.patch#L15
++        org.purpurmc.purpur.task.BeehiveTask.instance().unregister(); // Purpur
++        f_129750_.info("Unregistered Purpur beehive task."); // Magma
++
 +        f_129750_.info("Stopping server");
 +        // CraftBukkit start
 +        if (this.server != null) {
